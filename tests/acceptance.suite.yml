@@ -1,0 +1,30 @@
+# # Codeception Test Suite Configuration
+# #
+# # Suite for acceptance tests.
+# # Perform tests in browser using the WebDriver or PhpBrowser.
+# # If you need both WebDriver and PHPBrowser tests - create a separate suite.
+
+# actor: AcceptanceTester
+# modules:
+#     enabled:
+#         - PhpBrowser:
+#             url: http://localhost/myapp
+#         - \Helper\Acceptance
+
+class_name: AcceptanceTester
+modules:
+    enabled:
+        - \Helper\Acceptance
+        - WPWebDriver
+        - Asserts
+    config:
+        WPWebDriver:
+            url: 'http://testing.local'
+            port: 9515
+            browser: chrome
+            #browser: 'firefox'
+            #url: 'https://rteed:rtCpune@puja-addontest.blr.rtdemo.in/'
+            adminUsername: ''
+            adminPassword: ''
+            adminPath: '/wp-admin'
+            window_size: 1280x900
