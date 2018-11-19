@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Scenario : To enable privacy for users.
+ * Scenario : Media Ratings.
  */
 
 use Page\Login as LoginPage;
