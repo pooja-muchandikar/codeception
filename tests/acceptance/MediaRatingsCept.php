@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Scenario : To enable privacy for users.
+ * Scenario : Media Ratings.
  */
 
 use Page\Login as LoginPage;
@@ -16,6 +16,7 @@ $loginPage->loginAsAdmin( ConstantsPage::$userName, ConstantsPage::$password );
 // $settings = new DashboardSettingsPage( $I );
 // $settings->gotoSettings( ConstantsPage::displaySettingsUrl );
 
+//Add ratings to media
 $I->amOnPage( '/wp-admin/admin.php?page=rtmedia-settings#rtmedia-display' );
 $I->moveMouseOver('li#wp-admin-bar-my-account');
 $I->wait(2);
@@ -28,6 +29,8 @@ $I->wait(2);
 $I->click('.rtmedia-container.rtmedia-single-container span.rtm-mfp-close');
 $I->wait(2);
 $I->seeElement('.rtmedia-container');
+
+//Remove ratings of media
 $I->seeElement('.rtmedia-list.rtmedia-list-media');
 $I->click('.rtmedia-container .rtmedia-list > li:nth-child(2)');
 $I->wait(2);
@@ -37,6 +40,8 @@ $I->seeElement('.rtmedia-pro-average-rating .rtm-undo-rating');
 $I->click('.rtmedia-pro-average-rating .rtm-undo-rating');
 $I->wait(2);
 $I->click('.rtmedia-container.rtmedia-single-container span.rtm-mfp-close');
+
+//Add ratings to album
 $I->scrollTo(['css' => '#buddypress div.item-list-tabs']);
 $I->seeElement('.item-list-tabs');
 $I->click('li#rtmedia-nav-item-albums-li a');
