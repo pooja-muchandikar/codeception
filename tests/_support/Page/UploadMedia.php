@@ -8,38 +8,39 @@ class UploadMedia{
 
 	protected $tester;
 
-	public function _construct( \AcceptanceTester $I ) {
+	public function __construct( \AcceptanceTester $I ) {
 		$this->tester = $I;
 	}
 
 	//Upload Media Function
-	public function uploadMedia( $mediaUploadLink ) {
+	public function uploadMedia( ) {
 
 		$I = $this->tester;
 
 		// $I->seeElement( ConstantsPage :: $mediaPageScroll );
 		// $I->scrollTo( ConstantsPage :: $mediaPageScroll );
 		
-		$I->seeElement( ConstantsPage :: $mediaUploadLink );
-		$I->click( ConstansPage :: $mediaUploadLink);
+		// $myfile = fopen("Log.txt", "a") or die("Unable to open file!");
+		// fwrite($myfile, 'pooja');
+		// fclose($myfile);
+		// codecept_debug($I); 
+
+		$I->seeElement('.rtmedia-container');
+		$I->scrollTo('.rtmedia-container');
+		// $I->scrollTo(['css' => '.rtm-media-options.rtm-media-search-enable>*:nth-last-child(2)']);
+		$I->wait(2);
+		
+		$I->click( ConstantsPage :: $mediaUploadLink);
 		$I->waitForElement( ConstantsPage::$uploadContainer, 20 );
 		$I->seeElementInDOM( ConstantsPage::$selectFileButton );
-		$I->attachFile( ConstantsPage::$uploadFile, $mediaFile );
+		
+		$I->attachFile( ConstantsPage::$uploadFile, ConstantsPage::$audioName );
+		$I->wait(2);
 		$I->waitForElement( ConstantsPage::$fileList, 20 );
+		$I->click( ConstantsPage:: $uploadFile);
+		// $I->wait(5);
+		// $I->seeElement('.start-media-upload');
+		// $I->click( ConstantsPage:: $startUpload );
 	}
 
-	//Upload Media using start Upload
-	public function uploadMediaUsingStartUploadButton( $clickonCheckbox = 'no' ) {
-
-		$I = $this->tester;
-
-		$I->waitForElementVisible( ConstantsPage::$uploadMediaButton, 20 );
-		$I->click( ConstantsPage::$uploadMediaButton );
-
-		if ( 'no' != $clickonCheckbox ) {
-			$I->waitForElementVisible( ConstantsPage::$alertMessageClass , 10);
-		} else {
-			$I->waitForElementNotVisible( ConstantsPage::$fileList, 20 );
-		}
-	}
 }

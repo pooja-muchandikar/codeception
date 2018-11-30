@@ -29,8 +29,11 @@ $I->click('li#wp-admin-bar-my-account-media a');
 // $I->wait(2);
 
 $uploadmedia = new UploadMediaPage( $I );
-$I->scrollTo(['css' => '.rtmedia-container']);
-$I->wait(2);
-$uploadmedia->uploadMedia(ConstantsPage:: $mediaUploadLink);
+// $I->scrollTo(['css' => '.rtmedia-container']);
+// $I->wait(2);
+$uploadmedia->uploadMedia();
+
+$I->reloadPage();
+$I->wait(10);
 ?>
 
