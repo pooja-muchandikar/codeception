@@ -25,22 +25,32 @@ class UploadMedia{
 		// fclose($myfile);
 		// codecept_debug($I); 
 
-		$I->seeElement('.rtmedia-container');
-		$I->scrollTo('.rtmedia-container');
+		// $I->seeElement('.rtmedia-container');
+		// $I->scrollTo('.rtmedia-container', 0, 1000);
+		$I->seeElement('#user-activity');
+		$I->scrollTo('#user-activity');
 		// $I->scrollTo(['css' => '.rtm-media-options.rtm-media-search-enable>*:nth-last-child(2)']);
 		$I->wait(2);
 		
 		$I->click( ConstantsPage :: $mediaUploadLink);
 		$I->waitForElement( ConstantsPage::$uploadContainer, 20 );
-		$I->seeElementInDOM( ConstantsPage::$selectFileButton );
+		// $I->seeElementInDOM( ConstantsPage::$selectFileButton );
 		
 		$I->attachFile( ConstantsPage::$uploadFile, ConstantsPage::$audioName );
 		$I->wait(2);
 		$I->waitForElement( ConstantsPage::$fileList, 20 );
-		$I->click( ConstantsPage:: $uploadFile);
+		// $I->click( ConstantsPage:: $uploadFile);
 		// $I->wait(5);
 		// $I->seeElement('.start-media-upload');
 		// $I->click( ConstantsPage:: $startUpload );
+	}
+
+	//upload media directly
+	public function uploadMediaDirectly() {
+
+		$I = $this->tester;
+
+		$I->waitForElementNotVisible( ConstantsPage::$fileList, 20 );
 	}
 
 }

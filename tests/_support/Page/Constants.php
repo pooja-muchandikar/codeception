@@ -40,7 +40,7 @@ class Constants {
     public static $mediaUploadLink = '.rtm-media-options.rtm-media-search-enable>*:nth-last-child(2)';
     public static $uploadContainer = '.rtmedia-container';
     public static $selectFileButton = 'input#rtMedia-upload-button';
-    public static $uploadFile = 'input#rtMedia-upload-button.rtmedia-upload-input.rtmedia-file';
+    public static $uploadFile = 'div.moxie-shim.moxie-shim-html5 input[type=file]';
     public static $startUpload = '.start-media-upload';
     public static $mediaPrivacy = 'select#rtSelectPrivacy';
     public static $fileList = '#rtmedia_uploader_filelist';
