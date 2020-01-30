@@ -19,7 +19,7 @@ modules:
         - Asserts
     config:
         WPWebDriver:
-            url: 'http://testing.local'
+            url: 'https://rtcamp:goodwork@poojam.dev4.rt.gw/'
             port: 9515
             browser: chrome
             #browser: 'firefox'
